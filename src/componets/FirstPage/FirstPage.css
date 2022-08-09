@@ -1,0 +1,7 @@
+.tableContainer{
+    display:flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    margin-top: 300px;
+}
