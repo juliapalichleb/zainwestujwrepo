@@ -1,19 +1,15 @@
-import {useEffect, useState} from "react";
-import axios from "axios";
-import { isEmpty } from "lodash";
+import { Route, Routes } from "react-router-dom";
+import  FirstPage  from "./componets/FirstPage/FirstPage"
+import SecondPage from "./componets/SecondPage/SecondPage";
+
 
 function App() {
-  const [data, setData] = useState([]);
-
-  useEffect( () => {
-    axios.get(`https://api.github.com/orgs/alibaba/repos?per_page=200`).then(({ data }) => setData(data));
-  }, [])
-
 
   return (
-    <div className="App">
-      { !isEmpty(data) ? data[2].full_name : 'Loading...' }
-    </div>
+      <Routes>
+        <Route path="/" element={<FirstPage/>}/>
+        <Route path="/SecondPage" element={<SecondPage/>}/>
+      </Routes>
   );
 }
 
