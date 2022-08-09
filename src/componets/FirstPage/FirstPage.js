@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
 import RepoTable from "../RepoTable/RepoTable";
+import TablePagination from "../TablePagination/TablePagination"
+import { useState } from "react";
 
-const FirstPage = () => {
-    const [data, setData] = useState([]);
+import './FirstPage.css';
 
-    useEffect( () => {
-        axios.get(`https://api.github.com/orgs/alibaba/repos?per_page=200`).then(({ data }) => setData(data));
-    }, [])
+const FirstPage = ({ data }) => {
+    const dataInit = data.filter((repo, index) => index >= 0 && index < 9)
+    const [dataPagination, setDataPagination] = useState(dataInit);
 
     return (
-        <div>
-            {/*{ !isEmpty(data) ? data[2].full_name : 'Loading...' }*/}
-            <RepoTable data={data}/>
+        <div className='tableContainer'>
+            <RepoTable data={dataPagination}/>
+            <TablePagination setDataPagination={setDataPagination} data={data}/>
         </div>
     );
 };
