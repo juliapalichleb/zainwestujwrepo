@@ -1,27 +1,31 @@
-import { useNavigate } from "react-router-dom";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
+import {useDispatch } from "react-redux";
+import { setSelectedRepository } from "../../redux/repoSlice";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
+import SendIcon from '@mui/icons-material/Send';
 
 const TableRowRepo = ({ dataRow }) => {
-    const { full_name, id } = dataRow;
+    const { name, invested , email } = dataRow;
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/SecondPage',
-            {
-                state: {
-                    full_name: full_name,
-                    id: id
-                }
-            });
+        dispatch(setSelectedRepository(dataRow))
+        navigate('/SecondPage')
     }
 
     return (
             <TableRow>
-                <TableCell>{full_name}</TableCell>
-                <TableCell >----------------</TableCell>
-                <TableCell>----------------</TableCell>
-                <TableCell><button onClick={() => handleClick()}>-></button></TableCell>
+                <TableCell>{name}</TableCell>
+                <TableCell >{invested}</TableCell>
+                <TableCell>{email}</TableCell>
+                <TableCell>
+                    <Button onClick={handleClick} variant="contained" size="small" sx={{ backgroundColor: '#808080' }} endIcon={<SendIcon />}>
+                        invested
+                    </Button>
+                </TableCell>
             </TableRow>
     )
 }

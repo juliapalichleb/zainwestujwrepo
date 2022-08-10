@@ -1,12 +1,23 @@
-import { useLocation } from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'
+import FormRepo from "../FormRepo/FormRepo";
+import { updateTableRepo } from "../../redux/repoSlice";
 
-const SecondPage = () =>{
+const SecondPage = () => {
+    const dataRow = useSelector((state) => state.repoData.selectedRepository)
+    const table = useSelector((state) => state.repoData.repositories)
 
-    const location = useLocation();
-    const {data} = location.state;
+    const dispatch = useDispatch();
+    const updatedUser = {
+        id: dataRow.id,
+        email: 'noweEmail',
+        amount: 123
+    };
 
+    dispatch(updateTableRepo(updatedUser))
+    // console.log(dataTable)
+    console.log(table)
     return (
-        <h2>Second Page {console.log(data)}</h2>
+        <FormRepo dataRow={dataRow}/>
     )
 }
 
