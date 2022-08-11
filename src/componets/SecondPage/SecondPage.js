@@ -1,23 +1,19 @@
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import FormRepo from "../FormRepo/FormRepo";
-import { updateTableRepo } from "../../redux/repoSlice";
+import { updateSelectedRepository } from "../../redux/repoSlice";
+import { useNavigate } from "react-router-dom";
 
 const SecondPage = () => {
-    const dataRow = useSelector((state) => state.repoData.selectedRepository)
-    const table = useSelector((state) => state.repoData.repositories)
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const updatedUser = {
-        id: dataRow.id,
-        email: 'noweEmail',
-        amount: 123
-    };
 
-    dispatch(updateTableRepo(updatedUser))
-    // console.log(dataTable)
-    console.log(table)
+    const handleClick = ({ invested, email }) => {
+        dispatch(updateSelectedRepository({ invested, email }))
+        navigate('/ThreePage')
+    }
+
     return (
-        <FormRepo dataRow={dataRow}/>
+            <FormRepo handleClick={handleClick} />
     )
 }
 

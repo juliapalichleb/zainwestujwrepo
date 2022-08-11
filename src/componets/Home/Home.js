@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { isEmpty } from "lodash";
 import FirstPage from "../FirstPage/FirstPage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setRepositories } from "../../redux/repoSlice";
 
 const Home = () => {
-    const [data, setData] = useState([]);
     const dispatch = useDispatch();
+    const { repositories } = useSelector((state) => state.repoData)
 
     const handleData = (data) => {
-        const dataReduce = data.map(({ name, url, id }) => ({ id, name, url, invested:'---', email:'---' }));
-        setData(dataReduce)
+        const dataReduce = !isEmpty(repositories) ? repositories : data.map(({ name, url, id }) => ({ id, name, url, invested:'---', email:'---' }));
         dispatch(setRepositories(dataReduce))
     }
 
@@ -21,7 +20,7 @@ const Home = () => {
 
     return (
         <div>
-            { !isEmpty(data) ? <FirstPage data={data} /> : 'Loading...' }
+            { !isEmpty(repositories) ? <FirstPage data={repositories} /> : 'Loading...' }
         </div>
     );
 };

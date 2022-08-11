@@ -1,13 +1,13 @@
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import {useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSelectedRepository } from "../../redux/repoSlice";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send';
 
 const TableRowRepo = ({ dataRow }) => {
-    const { name, invested , email } = dataRow;
+    const { name, invested, email } = dataRow;
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

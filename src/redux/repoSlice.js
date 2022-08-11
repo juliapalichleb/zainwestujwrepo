@@ -6,33 +6,41 @@ export const repoSlice = createSlice({
         repositories: [],
         selectedRepository: {},
     },
-    reducers: {
-    setRepositories: (state, action) => {
-        state.repositories = action.payload
+        reducers: {
+       setRepositories: (state, action) => {
+            state.repositories = action.payload
 
-    },
-    setSelectedRepository: (state, action) => {
-        state.selectedRepository = action.payload
+        },
+        setSelectedRepository: (state, action) => {
+            state.selectedRepository = action.payload
 
-    },
-    updateTableRepo:  (state, action) => {
-        const { email, amount, id } = action.payload
-        const index = state.repositories.findIndex((repo) => repo.id === id)
-        console.log( id)
-        if (index) {
-            return [
-                ...state.repositories,
-                {
-                ...state.repositories[index],
-                     email,
-                    amount
-                }
-            ];
-    }
-    }
+        },
+        updateSelectedRepository: (state, action) => {
+           const {email, invested} = action.payload
+            state.selectedRepository.email = email
+            state.selectedRepository.invested = invested
+
+        },
+        updateTableRepo:  (state, action) => {
+            const { email, invested, id } = action.payload
+
+            // Solution with findIndex method
+            // const repoIndex = state.repositories.findIndex( (repository) => repository.id === id)
+            // if (repoIndex !== -1) {
+            //     state.repositories[repoIndex].email = email
+            // }
+            // Solution with map method
+            // const repositories = state.repositories.map( (repository) => {
+            //     if ( repository.id === id ){
+            //         repository.email = email
+            //     }
+            //     return repository;
+            // })
+            state.repositories.map( (repository) => repository.id === id ? (repository.email = email, repository.invested = invested) : repository)
+        }
     },
 })
 
-export const { setRepositories, setSelectedRepository, updateTableRepo } = repoSlice.actions
+export const { setRepositories, setSelectedRepository, updateTableRepo,updateSelectedRepository } = repoSlice.actions
 
 export default repoSlice.reducer
