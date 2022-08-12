@@ -4,6 +4,7 @@ import { isEmpty } from "lodash";
 import FirstPage from "../FirstPage/FirstPage";
 import { useDispatch, useSelector } from "react-redux";
 import { setRepositories } from "../../redux/repoSlice";
+import {Box, CircularProgress} from "@mui/material";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Home = () => {
 
     return (
         <div>
-            { !isEmpty(repositories) ? <FirstPage data={repositories} /> : 'Loading...' }
+            { !isEmpty(repositories) ? <FirstPage data={repositories} /> : <Box sx={{ display:'flex', justifyContent:'center', marginTop:'200px'}}> <CircularProgress /> </Box>  }
         </div>
     );
 };
