@@ -4,6 +4,8 @@ import SecondPage from "./componets/SecondPage/SecondPage";
 import ThreePage from "./componets/ThreePage/ThreePage";
 import FirstPage from "./componets/FirstPage/FirstPage";
 
+import './App.css'
+
 function App() {
 
   return (
