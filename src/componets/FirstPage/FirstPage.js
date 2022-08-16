@@ -15,7 +15,7 @@ const FirstPage = ({ data }) => {
                 <CardContent sx={{ display:'flex', alignItems:'center', flexDirection:'column' }}>
                     <Typography variant='h4'>Select repository</Typography>
                     <RepoTable data={dataPagination}/>
-                    <TablePagination setDataPagination={setDataPagination} data={data}/>
+                    <TablePagination setDataPagination={setDataPagination} data={data} />
                 </CardContent>
             </Card>
         </div>

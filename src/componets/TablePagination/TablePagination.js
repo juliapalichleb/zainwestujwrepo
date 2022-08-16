@@ -11,7 +11,7 @@ const TablePagination = ({ data, setDataPagination }) => {
     }
 
     return (
-     <Pagination count={perPage} onChange={handlePageChange}/>
+     <Pagination count={perPage} onChange={handlePageChange} sx={{ marginTop: '10px' }}/>
     );
 };
 

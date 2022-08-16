@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const repoSlice = createSlice({
     name: 'repoData',
@@ -23,7 +24,12 @@ export const repoSlice = createSlice({
         },
         updateTableRepo:  (state, action) => {
             const { email, invested, id } = action.payload
-
+            axios.patch(`http://localhost:8000/test/update/${id}`, {
+                invested: invested,
+                email: email
+            }).then(resp => {
+                console.log(resp.data);
+            })
             // Solution with findIndex method
             // const repoIndex = state.repositories.findIndex( (repository) => repository.id === id)
             // if (repoIndex !== -1) {
@@ -36,7 +42,7 @@ export const repoSlice = createSlice({
             //     }
             //     return repository;
             // })
-            state.repositories.map( (repository) => repository.id === id ? (repository.email = email, repository.invested = invested) : repository)
+            // state.repositories.map( (repository) => repository.id === id ? (repository.email = email, repository.invested = invested) : repository)
         }
     },
 })

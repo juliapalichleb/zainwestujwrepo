@@ -17,7 +17,7 @@ const FormRepo = ({ handleClick }) =>
         <div className='formContainer'>
             <Card sx={{ maxWidth: 420 }}>
                 <CardContent>
-                    <Typography variant='h4'>Invested in repository</Typography>
+                    <Typography variant='h4'>Invest in repository</Typography>
                     <Form >
                         <FormInput
                             name="email"
