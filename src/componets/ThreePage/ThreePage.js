@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 
 const ThreePage = () => {
-    const { selectedInformation } = useSelector((state) => state.repoData)
+    const { selectedRepository } = useSelector((state) => state.repoData)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ const ThreePage = () => {
     );
 
     const handleClick =  async () => {
-        dispatch(updateTableRepo(selectedInformation))
+        dispatch(updateTableRepo(selectedRepository))
         setLoading(false)
         await delay(1000);
         setLoading(true)
@@ -24,7 +24,7 @@ const ThreePage = () => {
     }
     return (
         <>
-            {loading ? <SelectedForm handleClick={handleClick} selectedInformation={selectedInformation}/> :
+            {loading ? <SelectedForm handleClick={handleClick} selectedInformation={selectedRepository}/> :
                 <Box sx={{display:'flex', justifyContent:'center', marginTop:'200px'}}> <CircularProgress /> </Box> }
         </>
     )
