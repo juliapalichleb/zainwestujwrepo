@@ -22,7 +22,7 @@ const TableRowRepo = ({ dataRow }) => {
                 <TableCell >{invested}</TableCell>
                 <TableCell>{email}</TableCell>
                 <TableCell>
-                    <Button onClick={handleClick} variant="contained" size="small" sx={{ backgroundColor: '#808080' }} endIcon={<SendIcon />}>
+                    <Button onClick={handleClick} variant="contained" size="small" sx={{backgroundColor: '#808080'}} endIcon={<SendIcon/>}>
                         invested
                     </Button>
                 </TableCell>

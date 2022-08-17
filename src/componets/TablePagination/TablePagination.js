@@ -5,7 +5,7 @@ const TablePagination = ({ data, setDataPagination }) => {
 
     const handlePageChange = (event, page) => {
        const indexOfFirst = (page-1) * 10;
-       const indexOFLast = (indexOfFirst-1) + perPage;
+       const indexOFLast = (indexOfFirst) + perPage;
        const dataPagination = data.filter((repo, index) => index >= indexOfFirst && index < indexOFLast);
         setDataPagination(dataPagination);
     }

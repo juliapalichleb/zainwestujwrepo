@@ -7,7 +7,7 @@ const SelectedInformationInput = ({ label, ...props }) => {
     return (
         <>
             <label>{label}</label>
-            <TextField{...field} {...props} variant="standard"  InputProps={{readOnly: true,}}  sx={{ backgroundColor: '#fff', width: '50ch', marginTop:'10px', marginBottom:'10px'}}/>
+            <TextField{...field} {...props} variant="standard" InputProps={{readOnly: true}} sx={{backgroundColor: '#fff', width: '50ch', marginTop:'10px', marginBottom:'10px'}}/>
         </>
     );
 };

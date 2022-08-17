@@ -6,8 +6,8 @@ import { RepoFormSchemas } from "../../schemas/RepoFormSchemas";
 
 import './FormRepo.css';
 
-const FormRepo = ({ handleClick }) =>
-<Formik initialValues={{ email:"", invested:"" }}
+const FormRepo = ({ handleClick, selectedRepository }) =>
+<Formik initialValues={{ email:selectedRepository.email, invested:selectedRepository.invested }}
         validationSchema={ RepoFormSchemas }
         onSubmit={ (values) => {
             handleClick(values)
@@ -15,9 +15,9 @@ const FormRepo = ({ handleClick }) =>
   >
     { () => (
         <div className='formContainer'>
-            <Card sx={{ maxWidth: 420 }}>
+            <Card sx={{maxWidth: 420}}>
                 <CardContent>
-                    <Typography variant='h4'>Invest in repository</Typography>
+                    <Typography variant='h4'>Invest in {selectedRepository.name}</Typography>
                     <Form >
                         <FormInput
                             name="email"
@@ -29,7 +29,7 @@ const FormRepo = ({ handleClick }) =>
                             label="Invested"
                             type="number"
                         />
-                        <Button type="submit" variant="contained" size="small" sx={{ backgroundColor: '#808080' }}> SUBMIT</Button>
+                        <Button type="submit" variant="contained" size="small" sx={{backgroundColor: '#808080'}}>SUBMIT</Button>
                     </Form>
                 </CardContent>
             </Card>

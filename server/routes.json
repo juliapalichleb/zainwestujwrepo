@@ -2,5 +2,6 @@
   "/test/list": "/test",
   "/test/create": "/test",
   "/test/update/:id": "/test/:id",
-  "/test/delete/:id": "/test/:id"
+  "/test/delete/:id": "/test/:id",
+  "/test/get/:id": "/employees/:id"
 }

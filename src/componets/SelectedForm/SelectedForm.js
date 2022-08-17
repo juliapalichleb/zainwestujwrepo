@@ -1,7 +1,7 @@
 import { Formik, Form } from "formik";
 import Button from "@mui/material/Button";
 import SelectedInformationInput from "../SelectedInformationInput/SelectedInformationInput";
-import {Card, CardContent, Typography} from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import CheckboxElement from "../CheckboxElement/CheckboxElement";
 
 import './SelectedForm.css';
@@ -16,7 +16,7 @@ const SelectedForm = ({ handleClick, selectedInformation }) =>
     >
         { () => (
             <div className='formContainer'>
-                <Card sx={{ maxWidth: '480px' }}>
+                <Card sx={{maxWidth: '480px'}}>
                     <CardContent >
                         <Typography variant='h4'>Confirm selected information</Typography>
                         <Form>
@@ -25,7 +25,8 @@ const SelectedForm = ({ handleClick, selectedInformation }) =>
                                 label="url"
                                 type="text"
                                 value={selectedInformation.url}
-                            />  <SelectedInformationInput
+                            />
+                            <SelectedInformationInput
                                 name="name"
                                 label="name"
                                 type="text"
@@ -43,7 +44,7 @@ const SelectedForm = ({ handleClick, selectedInformation }) =>
                                 type="number"
                                 value={selectedInformation.invested}
                             />
-                            <CheckboxElement type="checkbox" name="checkboxElement" />
+                            <CheckboxElement type="checkbox" name="checkboxElement"/>
                             <Button type="submit" variant="contained" size="small" sx={{ backgroundColor: '#808080', marginTop:'10px' }}>CONFIRM</Button>
                         </Form>
                     </CardContent>

@@ -9,7 +9,7 @@ const CheckboxElement = ({ ...props }) => {
                 <span>Confirm selected information</span>
                 <input{...field} {...props}/>
                 {meta.touched && meta.error &&
-                    <Alert severity="error" sx={{ marginTop:'10px'}}>{meta.error}</Alert>}
+                    <Alert severity="error" sx={{marginTop:'10px'}}>{meta.error}</Alert>}
             </div>
     );
 };
