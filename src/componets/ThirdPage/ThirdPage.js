@@ -5,29 +5,26 @@ import { updateTableRepo } from "../../redux/repoSlice";
 import { useState } from "react";
 import { Box, CircularProgress } from "@mui/material";
 
-const ThreePage = () => {
-    const { selectedRepository } = useSelector((state) => state.repoData)
+const ThirdPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [loading, setLoading] = useState(true);
+    const { selectedRepository } = useSelector((state) => state.repoData)
+    const [loading, setLoading] = useState(false);
 
     const delay = ms => new Promise(
         resolve => setTimeout(resolve, ms)
     );
 
-    const handleClick =  async () => {
+    const handleClick = async () => {
         dispatch(updateTableRepo(selectedRepository))
-        setLoading(false)
-        await delay(1000);
         setLoading(true)
+        await delay(1000);
+        setLoading(false)
         navigate('/')
     }
-    return (
-        <>
-            {loading ? <SelectedForm handleClick={handleClick} selectedInformation={selectedRepository}/> :
-                <Box sx={{display:'flex', justifyContent:'center', marginTop:'200px'}}> <CircularProgress /> </Box> }
-        </>
-    )
+    return !loading
+                ? <SelectedForm handleClick={handleClick} selectedInformation={selectedRepository}/>
+                : <Box sx={{display:'flex', justifyContent:'center', marginTop:'200px'}}><CircularProgress /></Box>
 }
 
-export default ThreePage;
+export default ThirdPage;

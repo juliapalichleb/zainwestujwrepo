@@ -1,9 +1,11 @@
 import TableRowRepo from "../TableRowRepo/TableRowRepo";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow
+} from "@mui/material";
 
 const RepoTable = ({ data }) =>
     <Table sx={{maxWidth: 600}} aria-label="simple table">
@@ -16,7 +18,7 @@ const RepoTable = ({ data }) =>
             </TableRow>
         </TableHead>
         <TableBody>
-            {data.map((repo, i) => <TableRowRepo dataRow={repo} key={i}/>)}
+            {data.map((repo, i) => <TableRowRepo dataRow={repo} key={i} />)}
         </TableBody>
     </Table>
 

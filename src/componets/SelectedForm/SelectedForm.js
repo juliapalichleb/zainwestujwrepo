@@ -10,9 +10,7 @@ import { CheckboxSchema } from "../../schemas/CheckboxSchema";
 const SelectedForm = ({ handleClick, selectedInformation }) =>
     <Formik initialValues={{ userEmail:"", invested:"", checkboxElement: false }}
             validationSchema={ CheckboxSchema }
-            onSubmit={ () => {
-                handleClick();
-            }}
+            onSubmit={ () => handleClick()}
     >
         { () => (
             <div className='formContainer'>

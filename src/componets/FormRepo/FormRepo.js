@@ -7,34 +7,36 @@ import { RepoFormSchemas } from "../../schemas/RepoFormSchemas";
 import './FormRepo.css';
 
 const FormRepo = ({ handleClick, selectedRepository }) =>
-<Formik initialValues={{ email:selectedRepository.email, invested:selectedRepository.invested }}
-        validationSchema={ RepoFormSchemas }
-        onSubmit={ (values) => {
-            handleClick(values)
+    <Formik
+        initialValues={{
+            email: selectedRepository.email,
+            invested: selectedRepository.invested
         }}
-  >
-    { () => (
-        <div className='formContainer'>
-            <Card sx={{maxWidth: 420}}>
-                <CardContent>
-                    <Typography variant='h4'>Invest in {selectedRepository.name}</Typography>
-                    <Form >
-                        <FormInput
-                            name="email"
-                            label="Email"
-                            type="email"
-                        />
-                        <FormInput
-                            name="invested"
-                            label="Invested"
-                            type="number"
-                        />
-                        <Button type="submit" variant="contained" size="small" sx={{backgroundColor: '#808080'}}>SUBMIT</Button>
-                    </Form>
-                </CardContent>
-            </Card>
-        </div>
-    )}
-</Formik>
+        validationSchema={ RepoFormSchemas }
+        onSubmit={(values) => handleClick(values)}
+    >
+        { () => (
+            <div className='formContainer'>
+                <Card sx={{ maxWidth: 420 }}>
+                    <CardContent>
+                        <Typography variant='h4'>Invest in {selectedRepository.name}</Typography>
+                        <Form >
+                            <FormInput
+                                name="email"
+                                label="Email"
+                                type="email"
+                            />
+                            <FormInput
+                                name="invested"
+                                label="Invested"
+                                type="number"
+                            />
+                            <Button type="submit" variant="contained" size="small" sx={{ backgroundColor: '#808080' }}>SUBMIT</Button>
+                        </Form>
+                    </CardContent>
+                </Card>
+            </div>
+        )}
+    </Formik>
 
 export default FormRepo;

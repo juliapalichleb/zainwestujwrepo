@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
-import FormRepo from "../FormRepo/FormRepo";
-import { updateSelectedRepository } from "../../redux/repoSlice";
 import { useNavigate } from "react-router-dom";
+
+import { updateSelectedRepository } from "../../redux/repoSlice";
+import FormRepo from "../FormRepo/FormRepo";
 
 const SecondPage = () => {
     const navigate = useNavigate();
@@ -10,11 +11,11 @@ const SecondPage = () => {
 
     const handleClick = ({ invested, email }) => {
         dispatch(updateSelectedRepository({ invested, email }))
-        navigate('/ThreePage')
+        navigate('/ThirdPage')
     }
 
     return (
-            <FormRepo handleClick={handleClick} selectedRepository={selectedRepository}/>
+        <FormRepo handleClick={handleClick} selectedRepository={selectedRepository}/>
     )
 }
 

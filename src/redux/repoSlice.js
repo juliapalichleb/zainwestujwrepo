@@ -7,7 +7,7 @@ export const repoSlice = createSlice({
         repositories: [],
         selectedRepository: {},
     },
-        reducers: {
+    reducers: {
        setRepositories: (state, action) => {
             state.repositories = action.payload
         },
@@ -15,15 +15,17 @@ export const repoSlice = createSlice({
             state.selectedRepository = action.payload
         },
         updateSelectedRepository: (state, action) => {
-           const {email, invested} = action.payload
+           const { email, invested } = action.payload
+
             state.selectedRepository.email = email
             state.selectedRepository.invested = invested
         },
         updateTableRepo:  (state, action) => {
             const { email, invested, id } = action.payload
+
             axios.patch(`http://localhost:8000/test/update/${id}`, {
-                invested: invested,
-                email: email
+                invested,
+                email
             })
             // Solution with findIndex method
             // const repoIndex = state.repositories.findIndex( (repository) => repository.id === id)
